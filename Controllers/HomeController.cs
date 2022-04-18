@@ -24,7 +24,7 @@ namespace eTicket.Controllers
         }
 
         //public IActionResult Privacy()
-        //{
+        //{ 
         //    return View();
         //}
 
