@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace eTicket.Data.Services
 {
-    public interface IActorService: IEntityBaseRepository<Actor>
+    public interface IProducerService: IEntityBaseRepository<Producer>
     {
         //Task<IEnumerable<Actor>> GetAllAsync();
         //Task<Actor> GetByIdAsync(int id);
