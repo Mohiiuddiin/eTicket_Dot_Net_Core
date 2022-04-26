@@ -83,13 +83,13 @@ namespace eTicket.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, Producer actor)
+        public async Task<IActionResult> Edit(int id, Producer producer)
         {
             if (!ModelState.IsValid)
             {
-                return View(actor);
+                return View(producer);
             }
-            await _service.UpdateAsync(id,actor);
+            await _service.UpdateAsync(id,producer);
 
             return RedirectToAction(nameof(Index));
         }
