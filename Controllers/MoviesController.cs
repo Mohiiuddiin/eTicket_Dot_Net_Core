@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace eTicket.Controllers
 {
-    public class MoviesController : Controller
+    public class MoviesController : Controller 
     {
         private readonly AppDbContext _context;
         public MoviesController(AppDbContext context)
@@ -18,7 +18,7 @@ namespace eTicket.Controllers
         public async Task<IActionResult> Index()
         {
             var data = await _context.Movies.Include(x=>x.Cinema).OrderBy(x=>x.Name).ToListAsync();
-            return View(data);//
+            return View(data);
         }
     }
 }
