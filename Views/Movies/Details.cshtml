@@ -1,7 +1,7 @@
-﻿@model IEnumerable<eTicket.Models.Movie>
+﻿@model Movie
 
 @{
-    ViewData["Title"] = "List Of Movies";
+    ViewData["Title"] = "Movie Details";
 }
 
 <h1>Index</h1>
@@ -9,39 +9,36 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<div class="row">
-    @foreach (var item in Model)
-    {
-        <div class="col-md-4 col-xs-6 border-primary mb-3">
+<div class="row">    
+        <div class="col-md-8 offset-2">
             <div class="card mb-3" style="max-width:540px">
                 <div class="row g-0">
                     <div class="col-md-12">
                         <div class="card-header text-white bg-info">
                             <p class="card-text">
                                 <h5 class="card-title">
-                                    @item.Name
-                                    <a class="text-white float-right"><i class="bi bi-pencil-square"></i></a>
+                                    @Model.Name
                                 </h5>
                             </p>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img src="@item.ImageURL" width="100%" alt="@item.Name" />
+                        <img src="@Model.ImageURL" width="100%" alt="@Model.Name" />
                     </div>
                     <div class="col-md-6">
                         <div class="card-body">
-                            <p class="card-text">@item.Description</p>
-                            <p class="card-text"><b>Cinema: </b>@item.Cinema.Name</p>
-                            <p class="card-text"><b>Category: </b>@item.MovieCategory</p>
-                            <p class="card-text"><b>Start Date: </b>@item.StartDate.ToShortDateString() </p>
-                            <p class="card-text"><b>End Date: </b>@item.EndDate.ToShortDateString()</p>
+                            <p class="card-text">@Model.Description</p>
+                            <p class="card-text"><b>Cinema: </b>@Model.Cinema.Name</p>
+                            <p class="card-text"><b>Category: </b>@Model.MovieCategory</p>
+                            <p class="card-text"><b>Start Date: </b>@Model.StartDate.ToShortDateString() </p>
+                            <p class="card-text"><b>End Date: </b>@Model.EndDate.ToShortDateString()</p>
                             <p class="card-text">
                                 <b>Status: </b>
-                                @if (DateTime.Now >= item.StartDate && DateTime.Now <= item.EndDate)
+                                @if (DateTime.Now >= Model.StartDate && DateTime.Now <= Model.EndDate)
                                 {
                                     <span class="badge bg-success text-white">AVAILABLE</span>
                                 }
-                                else if (DateTime.Now > item.EndDate)
+                                else if (DateTime.Now > Model.EndDate)
                                 {
                                     <span class="badge bg-danger text-white">Expired</span>
                                 }
@@ -55,13 +52,13 @@
                     <div class="col-md-12">
                         <div class="card-footer">
                             <p class="cart-text">
-                                <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id">
+                                <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@Model.Id">
                                     <i class="bi bi-eye-fill"></i>
                                     Show Details
                                 </a>
                                 <a class="btn btn-success text-white">
                                     <i class="bi bi-cart-plus"></i>
-                                    Add to Cart (Price @item.Price.ToString("c"))
+                                    Add to Cart (Price @Model.Price.ToString("c"))
                                 </a>
                             </p>
                         </div>
@@ -69,7 +66,7 @@
                 </div>
             </div>
         </div>
-    }
+    
 </div>
 
 

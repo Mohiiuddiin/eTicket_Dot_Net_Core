@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace eTicket.Controllers
+namespace eTicket.Controllers    
 {
     public class ProducersController : Controller
     {
@@ -89,8 +89,7 @@ namespace eTicket.Controllers
             {
                 return View(producer);
             }
-            await _service.UpdateAsync(id,producer);
-
+            await _service.UpdateAsync(id,producer);                      
             return RedirectToAction(nameof(Index));
         }
         public async Task<IActionResult> Details(int id)
