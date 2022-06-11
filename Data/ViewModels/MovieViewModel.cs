@@ -1,35 +1,32 @@
 ﻿using eTicket.Data;
-using eTicket.Data.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace eTicket.Models
 {
-    public class Movie : IEntityBase
+    public class MovieViewModel
     {
-        [Key]
-        public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string Description { get; set; }
+        [Required]
         public double Price { get; set; }
+        [Required]
         public string ImageURL { get; set; }
+        [Required]
         public DateTime StartDate { get; set; }
+        [Required]
         public DateTime EndDate { get; set; }
+        [Required]
         public MovieCategory MovieCategory { get; set; }
-        //relationships
-        public List<Actor_Movie> Actors_Movies { get; set; }
-
+        [Required]
+        public List<int> ActorIds { get; set; }
+        [Required]
         public int CinemaId { get; set; }
-        [ForeignKey("CinemaId")]
-        public Cinema Cinema { get; set; }
-
+        [Required]
         public int ProducerId { get; set; }
-        [ForeignKey("ProducerId")]
-        public Producer Producer { get; set; }
-
+        
     }
 }

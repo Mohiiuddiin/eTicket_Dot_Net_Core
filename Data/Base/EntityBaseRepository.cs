@@ -34,7 +34,7 @@ namespace eTicket.Data.Base
 
 
         public async Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includeProperties)
-        { 
+        {
             IQueryable<T> query = _context.Set<T>();
             query = includeProperties.Aggregate(query, (current, includeProperties) => current.Include(includeProperties));
             return await query.ToListAsync();
