@@ -32,6 +32,7 @@
                         <div class="card-body">
                             <p class="card-text">@item.Description</p>
                             <p class="card-text"><b>Cinema: </b>@item.Cinema.Name</p>
+                            @*<p class="card-text"><b>Cinema: </b>@item.Producer.FullName</p>*@
                             <p class="card-text"><b>Category: </b>@item.MovieCategory</p>
                             <p class="card-text"><b>Start Date: </b>@item.StartDate.ToShortDateString() </p>
                             <p class="card-text"><b>End Date: </b>@item.EndDate.ToShortDateString()</p>
@@ -47,7 +48,7 @@
                                 }
                                 else
                                 {
-                                    <span class="badge bg-success text-white">AVAILABLE</span>                                    
+                                    <span class="badge bg-success text-white">AVAILABLE</span>
                                 }
                             </p>
                         </div>
