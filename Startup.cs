@@ -1,7 +1,9 @@
 using eTicket.Data;
+using eTicket.Data.Cart;
 using eTicket.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -37,6 +39,11 @@ namespace eTicket
             services.AddScoped<IProducerService, ProducerService>();
             services.AddScoped<ICinemaService, CinemaService>();
             services.AddScoped<IMovieService, MovieService>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();//added to use session
+            services.AddScoped(x=> ShoppingCart.GetShoppingCart(x));
+            services.AddSession(); //added to use session
+
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,7 +63,7 @@ namespace eTicket
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseSession();//added to use session
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
