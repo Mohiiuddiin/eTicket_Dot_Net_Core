@@ -32,6 +32,16 @@ namespace eTicket.Controllers
             };
             return View(response);
         }
+
+        public async Task<RedirectToActionResult> AddShoppingCart(int id)
+        {
+            var item = await _movieService.GetMovieByIdAsync(id);
+            if (item != null)
+            {
+                _shoppingCart.AddItemToCart(item);
+            }
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
  

@@ -73,7 +73,7 @@ namespace eTicket.Controllers
             var producersDetails = await _service.GetByIdAsync(id);
             if (producersDetails == null)
             {
-                return View("NotFound");
+                return View("NotFound"); 
 
             }
             return View(producersDetails);
