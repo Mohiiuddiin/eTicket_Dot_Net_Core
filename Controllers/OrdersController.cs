@@ -13,11 +13,13 @@ namespace eTicket.Controllers
     {
         private readonly IMovieService _movieService;
         private readonly ShoppingCart _shoppingCart;
+        private readonly IOrderServices _orderService;
 
-        public OrdersController(IMovieService movieService, ShoppingCart shoppingCart)
+        public OrdersController(IMovieService movieService, ShoppingCart shoppingCart, IOrderServices orderService)
         {
             _movieService = movieService;
-            _shoppingCart = shoppingCart;    
+            _shoppingCart = shoppingCart;
+            _orderService = orderService;    
         }
 
 
@@ -51,6 +53,12 @@ namespace eTicket.Controllers
                 _shoppingCart.RemoveItemFromCart(item);
             }
             return RedirectToAction(nameof(Index));
+        }
+        public IActionResult CompleteOrder()
+        {
+            var items = _shoppingCart.GetShoppingCartItems();
+            string userId = "";
+            string userEmailAddress = "";
         }
     }
 }
