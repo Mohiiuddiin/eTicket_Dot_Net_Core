@@ -34,6 +34,12 @@ namespace eTicket.Controllers
             };
             return View(response);
         }
+        public async Task<IActionResult> OrderIndex()
+        {
+            string userId = "";
+            var orders = await _orderService.GetOrdersByUserIdAsync(userId);
+            return View(orders);
+        }
 
         public async Task<RedirectToActionResult> AddItemToShoppingCart(int id)
         {
@@ -42,7 +48,7 @@ namespace eTicket.Controllers
             {
                 _shoppingCart.AddItemToCart(item);
             }
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index));            
         }
 
         public async Task<RedirectToActionResult> RemoveItemFromShoppingCart(int id)
@@ -54,11 +60,15 @@ namespace eTicket.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
-        public IActionResult CompleteOrder()
+        public async Task<IActionResult> CompleteOrder()
         {
             var items = _shoppingCart.GetShoppingCartItems();
             string userId = "";
             string userEmailAddress = "";
+
+            await _orderService.StoreOrderAsync(items, userId, userEmailAddress);
+            await _shoppingCart.ClearShoppingCart();
+            return View("OrderCompleted");
         }
     }
 }
