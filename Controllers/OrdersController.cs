@@ -56,7 +56,7 @@ namespace eTicket.Controllers
             var item = await _movieService.GetMovieByIdAsync(id);
             if (item != null)
             {
-                _shoppingCart.RemoveItemFromCart(item);
+                _shoppingCart.RemoveItemFromCart(item);//
             }
             return RedirectToAction(nameof(Index));
         }
