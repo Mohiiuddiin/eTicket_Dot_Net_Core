@@ -24,18 +24,18 @@
                         </li>
 
                         @*@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                        {*@
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="bi bi-gear"></i> Management
-                                </a>
+            {*@
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-gear"></i> Management
+                            </a>
 
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" asp-controller="Cinemas" asp-action="Index"><i class="bi bi-camera-reels"></i> Cinemas</a>
-                                    <a class="dropdown-item" asp-controller="Producers" asp-action="Index"><i class="bi bi-headset"></i> Producers</a>
-                                    <a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-square"></i> Actors</a>
-                                </div>
-                            </li>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-controller="Cinemas" asp-action="Index"><i class="bi bi-camera-reels"></i> Cinemas</a>
+                                <a class="dropdown-item" asp-controller="Producers" asp-action="Index"><i class="bi bi-headset"></i> Producers</a>
+                                <a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-square"></i> Actors</a>
+                            </div>
+                        </li>
                         @*}*@
 
                     </ul>
@@ -49,7 +49,12 @@
                     </ul>
 
                     <a class="btn btn-outline-success my-2 my-sm-0" asp-controller="Account" asp-action="Login">
-                    <i class="bi bi-box-arrow-in-right"></i> Login</a>
+                        <i class="bi bi-box-arrow-in-right"></i> Login
+                    </a>
+
+                    <a class="btn btn-outline-primary my-2 my-sm-0" asp-controller="Account" asp-action="SignUp">
+                        <i class="bi bi-person-plus"></i> Sign Up
+                    </a>
 
                     <div class="dropdown">
                         <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-toggle="dropdown" aria-expanded="false">
@@ -63,10 +68,10 @@
                             </li>
                         </ul>
                     </div>
-                    
+
                     @*<ul class="navbar-nav">
-                        @await Component.InvokeAsync("ShoppingCartSummary")
-                    </ul>*@
+            @await Component.InvokeAsync("ShoppingCartSummary")
+        </ul>*@
 
                     @*<partial name="_Identity.cshtml" />*@
                 </div> 

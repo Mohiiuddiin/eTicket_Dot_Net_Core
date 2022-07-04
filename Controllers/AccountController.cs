@@ -51,5 +51,7 @@ namespace eTicket.Controllers
             TempData["Error"] = "wrong credentials, try again!";
             return View(loginVM);
         }
+
+        public IActionResult SignUp() => View(new SignUpVM());
     }
 }
