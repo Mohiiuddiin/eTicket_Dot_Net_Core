@@ -354,7 +354,7 @@ namespace eTicket.Data
 
                 string appUserEmail = "user@etickets.com";
                 var appUser = await userManager.FindByEmailAsync(appUserEmail);
-                if (appUserEmail == null)
+                if (appUser == null)
                 {
                     var newAppUser = new ApplicationUser()
                     {
