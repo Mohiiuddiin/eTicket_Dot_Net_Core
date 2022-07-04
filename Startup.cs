@@ -75,6 +75,7 @@ namespace eTicket
             });
             //seed databe
             AppDbInitializer.Seed(app);
+            AppDbInitializer.SeedUsersAndRoleAsync(app).Wait();
         }
     }
 }
