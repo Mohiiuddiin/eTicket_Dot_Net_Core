@@ -22,8 +22,9 @@ namespace eTicket.Controllers
             _signInManager = signInManager;
             _context = context;
         }
-        public IActionResult Index()
+        public IActionResult Login()
         {
+            
             return View();
         }
     }
