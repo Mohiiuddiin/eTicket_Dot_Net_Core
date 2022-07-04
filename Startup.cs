@@ -1,10 +1,13 @@
 using eTicket.Data;
 using eTicket.Data.Cart;
 using eTicket.Data.Services;
+using eTicket.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -44,6 +47,14 @@ namespace eTicket
             services.AddScoped(x=> ShoppingCart.GetShoppingCart(x));
             services.AddSession(); //added to use session
 
+            //authentication and authorization
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            services.AddMemoryCache();
+            services.AddAuthentication(options=> 
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            });
+
             services.AddControllersWithViews();
         }
 
@@ -65,6 +76,8 @@ namespace eTicket
 
             app.UseRouting();
             app.UseSession();//added to use session
+            //authentication and authorization
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
