@@ -1,5 +1,6 @@
 ﻿using eTicket.Models;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -308,6 +309,14 @@ namespace eTicket.Data
                     });
                     context.SaveChanges();
                 }
+            }
+        }
+        public static async Task SeedUsersAndRoleAsync(IApplicationBuilder applicationBuilder)
+        {
+            using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
+            {
+                var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
             }
         }
     }

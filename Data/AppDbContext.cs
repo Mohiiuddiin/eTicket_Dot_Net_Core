@@ -47,5 +47,7 @@ namespace eTicket.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+        //public DbSet<ApplicationUser>IdentityUsrr { get; set; }
+        //public DbSet<ApplicationUser>IdentityUsrr { get; set; }
     }
 }
